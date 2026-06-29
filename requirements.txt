@@ -1,0 +1,6 @@
+# The core experiments intentionally use the Python standard library only.
+# Optional plotting/notebook dependencies can be installed separately.
+pytest>=8.0
+psutil>=7.0
+PyYAML>=6.0
+numpy>=2.0

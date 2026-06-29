@@ -1,0 +1,60 @@
+{
+  "policy": {
+    "max_transfer_amount": 5000,
+    "max_purchase_amount": 2000,
+    "allowed_email_domains": [],
+    "allowed_data_exports": [],
+    "require_human_approval_for": [],
+    "secret_labels": [],
+    "unauthorized_real_activities": [
+      "a_denied",
+      "a_cancelled",
+      "delete purchase order item",
+      "cancel invoice receipt",
+      "cancel goods receipt",
+      "cancel subsequent invoice",
+      "block purchase order item",
+      "set payment block",
+      "reactivate purchase order item",
+      "srm: transfer failed (e.sys.)",
+      "srm: deleted",
+      "srm: incomplete",
+      "srm: held",
+      "change rejection indicator"
+    ]
+  },
+  "selector": {
+    "lambda_cost": 1.0,
+    "lambda_leak": 4.0,
+    "lambda_time": 0.5,
+    "ancestor_depth": 12,
+    "allow_commitment_only_nodes": true
+  },
+  "cost_model": {
+    "receipt_verify_ms": 0.25,
+    "policy_replay_ms": 1.5,
+    "node_open_ms": 0.8,
+    "storage_bytes_per_receipt": 640,
+    "storage_bytes_per_node": 512
+  },
+  "baselines": [
+    "plain_logs",
+    "otel_logs",
+    "signed_receipts",
+    "aip_delegation",
+    "agentdid_identity",
+    "sudp_secret_delegation",
+    "agent_sentry_bounds",
+    "full_replay_oracle",
+    "crr_agent"
+  ],
+  "ablations": [
+    "no_receipt",
+    "no_causal_dag",
+    "no_policy_record",
+    "no_minimal_selector",
+    "full_replay",
+    "action_only_replay",
+    "no_ancestor_replay"
+  ]
+}

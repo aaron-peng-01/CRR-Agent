@@ -1,0 +1,43 @@
+profiles:
+  audit:
+    cpu_workers: 1
+    omp_threads: 1
+    mkl_threads: 1
+    max_concurrent_runs: 1
+    memory_limit_gb: 4
+    gpu_enabled: false
+    checkpoint_every: 100
+    max_cases: 500
+  pilot:
+    cpu_workers: 6
+    omp_threads: 1
+    mkl_threads: 1
+    max_concurrent_runs: 1
+    memory_limit_gb: 12
+    gpu_enabled: false
+    checkpoint_every: 250
+    max_cases: 5000
+  full:
+    cpu_workers: 10
+    omp_threads: 1
+    mkl_threads: 1
+    max_concurrent_runs: 1
+    memory_limit_gb: 22
+    gpu_enabled: false
+    checkpoint_every: 1000
+    max_cases: null
+  stress:
+    cpu_workers: 12
+    omp_threads: 1
+    mkl_threads: 1
+    max_concurrent_runs: 1
+    memory_limit_gb: 24
+    gpu_enabled: false
+    checkpoint_every: 1000
+    max_cases: null
+
+gpu_optional:
+  device: cuda:0
+  precision: fp16
+  embedding_batch_size: 32
+  max_vram_gb: 7

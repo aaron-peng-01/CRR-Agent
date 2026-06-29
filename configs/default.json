@@ -1,0 +1,66 @@
+{
+  "seed": 42,
+  "num_cases": 500,
+  "scenario_mix": {
+    "procurement": 0.2,
+    "finance": 0.2,
+    "email_support": 0.2,
+    "data_access": 0.2,
+    "multi_agent": 0.2
+  },
+  "attack_mix": {
+    "benign": 0.18,
+    "prompt_injection": 0.1,
+    "tool_poisoning": 0.1,
+    "scope_drift": 0.1,
+    "over_delegation": 0.1,
+    "secret_misuse": 0.1,
+    "ambiguous_instruction": 0.08,
+    "malicious_sub_agent": 0.08,
+    "stale_policy": 0.08,
+    "wrong_tool_binding": 0.08,
+    "side_effect_mismatch": 0.1
+  },
+  "policy": {
+    "max_transfer_amount": 5000,
+    "max_purchase_amount": 2000,
+    "allowed_email_domains": ["customer.example", "vendor.example", "internal.example"],
+    "allowed_data_exports": ["aggregate", "redacted"],
+    "require_human_approval_for": ["payment_execute", "purchase_order_submit", "bulk_email_send"],
+    "secret_labels": ["api_key", "bank_token", "customer_pii"]
+  },
+  "selector": {
+    "lambda_cost": 1.0,
+    "lambda_leak": 4.0,
+    "lambda_time": 0.5,
+    "ancestor_depth": 8,
+    "allow_commitment_only_nodes": true
+  },
+  "cost_model": {
+    "receipt_verify_ms": 0.25,
+    "policy_replay_ms": 1.5,
+    "node_open_ms": 0.8,
+    "storage_bytes_per_receipt": 640,
+    "storage_bytes_per_node": 512
+  },
+  "baselines": [
+    "plain_logs",
+    "otel_logs",
+    "signed_receipts",
+    "aip_delegation",
+    "agentdid_identity",
+    "sudp_secret_delegation",
+    "agent_sentry_bounds",
+    "full_replay_oracle",
+    "crr_agent"
+  ],
+  "ablations": [
+    "no_receipt",
+    "no_causal_dag",
+    "no_policy_record",
+    "no_minimal_selector",
+    "full_replay",
+    "action_only_replay",
+    "no_ancestor_replay"
+  ]
+}
